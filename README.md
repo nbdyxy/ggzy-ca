@@ -34,7 +34,7 @@
 6. stamper.js，GDCA的签章依赖脚本；
 7. netcaseal.js，NETCA的签章依赖脚本；
 8. gzggzy-integration.min-1.2.1.js，各CA集成脚本，本文档主要介绍该脚本的接入使用，详见[客户端接口说明](#jsapi)章节。
-7. [文件下载链接](https://ca.gzggzy.cn/js.zip)
+7. [文件下载链接](http://ca.gzggzy.cn/js.zip)
 8. [客户端Demo](http://ca.gzggzy.cn/yyh/gzggzy-integration.html)
 9. CA驱动请登录各CA公司官网下载最新版本驱动
 
