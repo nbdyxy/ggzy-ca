@@ -18,9 +18,10 @@
 <script language="JavaScript" src="yourpath/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script language="JavaScript" src="yourpath/jquery.jsonp.js" type="text/javascript"></script>
 <script language="JavaScript" src="yourpath/json2.js" type="text/javascript"></script>
-<script language="JavaScript" src="yourpath/gdca.min-1.2.1.js" type="text/javascript"></script>
-<script language="JavaScript" src="yourpath/netca.min-1.2.1.js" type="text/javascript"></script>
-<script language="JavaScript" src="yourpath/gzggzy-integration.min-1.2.1.js" type="text/javascript"></script>
+<script language="JavaScript" src="yourpath/gdca.min-1.2.2.js" type="text/javascript"></script>
+<script language="JavaScript" src="yourpath/netca.min-1.2.2.js" type="text/javascript"></script>
+<script language="JavaScript" src="yourpath/tdrca.min-1.2.2.js" type="text/javascript"></script>
+<script language="JavaScript" src="yourpath/gzggzy-integration.min-1.2.3.js" type="text/javascript"></script>
 <script language="JavaScript" src="yourpath/stamper.js" type="text/javascript"></script>
 <script language="JavaScript" src="yourpath/netcaseal.js" type="text/javascript"></script>
 <script language="JavaScript" src="yourpath/ebidsun.min-1.2.1.js" type="text/javascript"></script>
@@ -28,15 +29,16 @@
 ##### 说明：
 1. jquery-1.11.3.min.js，集成脚本基于jquery实现，建议引入1.11以上的版本；
 2. jquery.jsonp.js、json2.js是各CA公司用于同驱动服务通讯的工具包；
-3. gdca.min-1.2.1.js，兼容GDCA的封装脚本；
-4. netca.min-1.2.1.js，兼容NETCA的封装脚本；
-5. ebidsun.min-1.2.1.js，兼容标信通的封装脚本（注：目前暂未集成标系统CA相关方法，只集成了标信通签章）；
-6. stamper.js，GDCA的签章依赖脚本；
-7. netcaseal.js，NETCA的签章依赖脚本；
-8. gzggzy-integration.min-1.2.1.js，各CA集成脚本，本文档主要介绍该脚本的接入使用，详见[客户端接口说明](#jsapi)章节。
-7. [文件下载链接](http://ca.gzggzy.cn/js.zip)
-8. [客户端Demo](http://ca.gzggzy.cn/yyh/gzggzy-integration.html)
-9. CA驱动请登录各CA公司官网下载最新版本驱动
+3. gdca.min-1.2.2.js，兼容GDCA的封装脚本；
+4. netca.min-1.2.2.js，兼容NETCA的封装脚本；
+5. tdrca.min-1.2.2.js，兼容共享盾的封装脚本；
+6. ebidsun.min-1.2.1.js，兼容标信通的封装脚本（注：目前暂未集成标系统CA相关方法，只集成了标信通签章）；
+7. stamper.js，GDCA的签章依赖脚本；
+8. netcaseal.js，NETCA的签章依赖脚本；
+9. gzggzy-integration.min-1.2.3.js，各CA集成脚本，本文档主要介绍该脚本的接入使用，详见[客户端接口说明](#jsapi)章节；
+10.[客户端Demo(js文件已压缩)](http://ca.gzggzy.cn/yyh/gzggzy-integration.html)；
+11.[客户端Demo(js文件未压缩)](http://ca.gzggzy.cn/yyh/gzggzy-integration-test.html)；
+12.CA驱动另行提供。
 
 ##### 兼容
 所有常规浏览器以及IE10+
@@ -346,6 +348,8 @@ msg | 执行成功时返回验证成功，执行失败时返回失败的原因
 参数名称 | 必选 | 类型 | 描述
 ---|---|---|---
 encryptPlainData | 是 | string | 加密原文
+enCert | 是 | string | 加密证书
+cadeviceType | 是 | string | CA类型 'GDCA' 'NETCA' 'TDRCA'
 timeout | 否 | int | 方法调用超时时间，单位ms，默认为20000ms
 
 3. 输出参数
