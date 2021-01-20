@@ -124,6 +124,8 @@ msg | 执行成功时反馈相应的CA或签章信息，执行失败时返回失
 [getCachePassword](#getCachePassword) | 获取当前登录设备的密码
 [getCert](#getCert) | 获取证书信息
 [getCertInfo](#getCertInfo) | 获取证书基本信息（公共资源定制）
+[getCertSn](#getCertSn) | 获取证书序列号
+[getTrustID](#getTrustID) | 获取CA序列号
 [p1Sign](#p1Sign) | p1签名
 [p1Verify](#p1Verify) | p1验签
 [p7Sign](#p7Sign) | p7签名
@@ -241,6 +243,50 @@ subjectCn | 证书持有人
 validFromDate | 有效期(始)
 validToDate | 有效期(终)
 caType |  证书类型: JG---机构、YW---业务、ZRR---自然人
+
+#### <div id='getCertSn'><h3 style='color: red;'>getCertSn</h3></div>
+
+1. 方法描述
+
+> 获取签名证书或加密证书序列号
+
+2. 输入参数
+
+参数名称 | 必选 | 类型 | 描述
+---|---|---|---
+certBase64 | 是 | string | 证书Base64串
+timeout | 否 | int | 方法调用超时时间，单位ms，默认为20000ms
+
+3. 输出参数
+
+> response对象
+
+参数名称 | 描述
+---|---
+status | 方法执行情况，true：执行录成功，false：执行失败
+msg | 执行成功时返回证书序列号，执行失败时返回失败的原因
+
+#### <div id='getTrustID'><h3 style='color: red;'>getTrustID</h3></div>
+
+1. 方法描述
+
+> 获取CA序列号
+
+2. 输入参数
+
+参数名称 | 必选 | 类型 | 描述
+---|---|---|---
+certBase64 | 是 | string | 签名证书Base64串
+timeout | 否 | int | 方法调用超时时间，单位ms，默认为20000ms
+
+3. 输出参数
+
+> response对象
+
+参数名称 | 描述
+---|---
+status | 方法执行情况，true：执行录成功，false：执行失败
+msg | 执行成功时返回CA序列号，执行失败时返回失败的原因
 
 #### <div id='p1Sign'><h3 style='color: red;'>p1Sign</h3></div>
 
