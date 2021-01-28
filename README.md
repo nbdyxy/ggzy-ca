@@ -119,8 +119,10 @@ msg | 执行成功时反馈相应的CA或签章信息，执行失败时返回失
 
 接口名称 | 接口功能
 ---|---
+[init](#init) | 初始化读取当前插入电脑的CA情况(内部轮询调用各CA厂商的CA检测接口)
 [login](#login) | 用户登录（仅限于客户端）
 [checkDevice](#checkDevice) | 根据localStorage获取登录设备的CA类型
+[getSelectCA](#getSelectCA) | 获取用户选择的CA信息，不需要登录
 [getCachePassword](#getCachePassword) | 获取当前登录设备的密码
 [getCert](#getCert) | 获取证书信息
 [getCertInfo](#getCertInfo) | 获取证书基本信息（公共资源定制）
@@ -137,6 +139,29 @@ msg | 执行成功时反馈相应的CA或签章信息，执行失败时返回失
 [signSealWithPositionAndReturnB64](#signSealWithPositionAndReturnB64) | 坐标定位签章并返回盖章后的B64文件
 [signTextSealWithPositionAndReturnB64](#signTextSealWithPositionAndReturnB64) | 坐标定位签文本章并返回盖章后的B64文件
 [signForGPOB64](#signForGPOB64) | 医药耗材定制签章方法
+
+#### <div id='init'><h3 style='color: red;'>init</h3></div>
+
+1. 方法描述
+> 初始化读取当前插入电脑的CA情况(内部轮询调用各CA厂商的CA检测接口)
+
+2. 输入参数
+
+参数名称 | 必选 | 类型 | 描述
+---|---|---|---
+timeout | 否 | int | 设置调用超时时间，缺省为20秒
+ 
+3. 输出参数
+> 二维数组，数组内存储CA设备信息对象
+
+CA设备信息对象
+参数名称 | 描述
+---|---
+cadeviceType | CA类型，GDCA、NETCA、TDRCA
+sn | NETCA、TDRCA：序列号，GDCA：容器名称
+cn | 证书持有人
+deviceType | 当CA类型为NETCA时，该值有效
+
 
 #### <div id='login'><h3 style='color: red;'>login</h3></div>
 
@@ -172,6 +197,28 @@ msg | 登录成功时返回登录成功，登录失败时返回失败的原因
 ---|---
 status | 方法执行情况，true：登录成功，false：登录失败
 msg | 执行成功时返回设备类型，执行失败时返回失败的原因
+
+#### <div id='getSelectCA'><h3 style='color: red;'>getSelectCA</h3></div>
+
+1. 方法描述
+> CA选择框（无需登录），根据传入的CA证书数组，并弹出对话框供用户选择，结合init方法使用
+
+2. 输入参数
+
+参数名称 | 必选 | 类型 | 描述
+---|---|---|---
+tempList | 是 | array | 一维CA设备信息数组
+ 
+3. 输出参数
+> 执行成功时返回用户选择的CA设备信息，执行失败时返回失败的具体原因
+
+CA设备信息对象
+参数名称 | 描述
+---|---
+cadeviceType | CA类型，GDCA、NETCA、TDRCA
+sn | NETCA、TDRCA：序列号，GDCA：容器名称
+cn | 证书持有人
+deviceType | 当CA类型为NETCA时，该值有效
 
 #### <div id='getCachePassword'><h3 style='color: red;'>getCachePassword</h3></div>
 
