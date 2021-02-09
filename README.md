@@ -196,8 +196,15 @@ msg | 登录成功时返回登录成功，登录失败时返回失败的原因
 
 参数名称 | 描述
 ---|---
-status | 方法执行情况，true：检查成功，false：检查失败
+status | 方法执行情况，true：检查成功（有一个驱动检查成功即返回true），false：检查失败
 msg | 执行成功时返回设备类型，执行失败时返回失败的原因
+
+serviceInfo驱动服务信息对象
+参数名称 | 描述
+---|---
+caType | CA类型，GDCA、NETCA、TDRCA
+status | true: 驱动检查成功，false：驱动检查失败
+msg | 成功时返回具体的版本号，失败时返回失败的原因
 
 
 #### <div id='checkDevice'><h3 style='color: red;'>checkDevice</h3></div>
@@ -213,15 +220,9 @@ msg | 执行成功时返回设备类型，执行失败时返回失败的原因
 
 参数名称 | 描述
 ---|---
-status | 方法执行情况，true：检查成功（有一个驱动检查成功即返回true），false：登录失败
+status | 方法执行情况，true：登录成功，false：登录失败
 msg | 执行成功时返回serviceInfo对象数组，执行失败时返回固定信息"驱动服务检查失败，请确认已安装并打开CA驱动客户端"
 
-serviceInfo驱动服务信息对象
-参数名称 | 描述
----|---
-caType | CA类型，GDCA、NETCA、TDRCA
-status | true: 驱动检查成功，false：驱动检查失败
-msg | 成功时返回具体的版本号，失败时返回失败的原因
 
 #### <div id='getSelectCA'><h3 style='color: red;'>getSelectCA</h3></div>
 
