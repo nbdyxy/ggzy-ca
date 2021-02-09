@@ -121,6 +121,7 @@ msg | 执行成功时反馈相应的CA或签章信息，执行失败时返回失
 ---|---
 [init](#init) | 初始化读取当前插入电脑的CA情况(内部轮询调用各CA厂商的CA检测接口)
 [login](#login) | 用户登录（仅限于客户端）
+[checkService](#checkService) | 驱动服务检查接口，返回当前环境已安装的驱动版本
 [checkDevice](#checkDevice) | 根据localStorage获取登录设备的CA类型
 [getSelectCA](#getSelectCA) | 获取用户选择的CA信息，不需要登录
 [getCachePassword](#getCachePassword) | 获取当前登录设备的密码
@@ -182,6 +183,23 @@ pin | 否 | string | 若该参数非空，则不弹出密码输入框，直接�
 status | 方法执行情况，true：登录成功，false：登录失败
 msg | 登录成功时返回登录成功，登录失败时返回失败的原因
 
+#### <div id='checkService'><h3 style='color: red;'>checkService</h3></div>
+
+1. 方法描述
+> 驱动服务检查接口，返回当前环境已安装的驱动版本
+
+2. 输入参数
+> 无
+ 
+3. 输出参数
+> response对象
+
+参数名称 | 描述
+---|---
+status | 方法执行情况，true：检查成功，false：检查失败
+msg | 执行成功时返回设备类型，执行失败时返回失败的原因
+
+
 #### <div id='checkDevice'><h3 style='color: red;'>checkDevice</h3></div>
 
 1. 方法描述
@@ -195,8 +213,15 @@ msg | 登录成功时返回登录成功，登录失败时返回失败的原因
 
 参数名称 | 描述
 ---|---
-status | 方法执行情况，true：登录成功，false：登录失败
-msg | 执行成功时返回设备类型，执行失败时返回失败的原因
+status | 方法执行情况，true：检查成功（有一个驱动检查成功即返回true），false：登录失败
+msg | 执行成功时返回serviceInfo对象数组，执行失败时返回固定信息"驱动服务检查失败，请确认已安装并打开CA驱动客户端"
+
+serviceInfo驱动服务信息对象
+参数名称 | 描述
+---|---
+caType | CA类型，GDCA、NETCA、TDRCA
+status | true: 驱动检查成功，false：驱动检查失败
+msg | 成功时返回具体的版本号，失败时返回失败的原因
 
 #### <div id='getSelectCA'><h3 style='color: red;'>getSelectCA</h3></div>
 
